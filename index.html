@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pengumuman Kelulusan SD</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:700,400&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem 1rem 3rem;
+      min-height: 100vh;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: linear-gradient(135deg, #44b0a5 0%, #38b2ac 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      box-sizing: border-box;
+    }
+    .judul-atas {
+      color: #102928;
+      font-size: 2.6rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 0 0 1.5rem 0;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+      user-select: none;
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+    .container {
+      background: #fff;
+      padding: 2.5rem 2rem 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(44, 62, 80, 0.18);
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+      box-sizing: border-box;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    p {
+      color: #444;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      font-size: 1rem;
+    }
+    .logo {
+      display: block;
+      margin: 0 auto 1.5rem auto;
+      max-width: 120px;
+      height: auto;
+      user-select: none;
+    }
+    form {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+    }
+    input.part {
+      width: 2rem;
+      max-width: 100%;
+      padding: 0.5rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-align: center;
+      border: 2px solid #38b2ac;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    input.part:focus {
+      border-color: #319795;
+    }
+    /* Lebar tiap input sesuai jumlah digit */
+    input.part.part1 { width: 2.1rem; }
+    input.part.part2, input.part.part3 { width: 2.8rem; }
+    input.part.part4 { width: 4.5rem; }
+    input.part.part5 { width: 2.1rem; }
+
+    button {
+      background: linear-gradient(90deg, #38b2ac 0%, #4fd1c5 100%);
+      color: #fff;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 0.5rem;
+      user-select: none;
+      flex-basis: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #319795 0%, #2c7a7b 100%);
+      transform: translateY(-2px) scale(1.04);
+    }
+    .success {
+      color: #319795;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-top: 1.5rem;
+      animation: pop 0.6s ease forwards;
+      user-select: none;
+    }
+    .error {
+      color: #e53e3e;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      user-select: none;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0;}
+      80% { transform: scale(1.1);}
+      100% { transform: scale(1); opacity: 1;}
+    }
+    .confetti {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* MEDIA QUERIES untuk tampilan responsif */
+    @media (max-width: 480px) {
+      body {
+        padding: 1rem 0.5rem 2rem;
+      }
+      .judul-atas {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      .container {
+        padding: 1.5rem 1rem 1rem;
+        margin: 0 0.5rem;
+      }
+      p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+      }
+      .logo {
+        max-width: 90px;
+        margin-bottom: 1rem;
+      }
+      input.part {
+        width: 1.6rem !important;
+        font-size: 1rem;
+        padding: 0.4rem;
+      }
+      input.part.part2, input.part.part3 {
+        width: 2.3rem !important;
+      }
+      input.part.part4 {
+        width: 3.5rem !important;
+      }
+      button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
+      .success {
+        font-size: 1.2rem;
+      }
+      .error {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas class="confetti"></canvas>
+
+  <h1 class="judul-atas">
+    SELAMAT DATANG<br />
+    <span style="font-weight:600; font-size:1.5rem; color:#263d3c; user-select:none;">di Pengumuman kelulusan</span><br />
+    <span style="font-weight:700; font-size:1.7rem; color:#2b3f39; user-select:none;">SD Negeri Pakal 1</span>
+  </h1>
+
+  <div class="container" id="mainContainer">
+    <img src="logo.png" width="150" height="150" />
+    <p id="instruksi">Silakan masukkan nomor ujian Anda sesuai format <b>x - xx - xx - xxx - x</b>.</p>
+    <form id="formKelulusan" autocomplete="off" novalidate>
+      <input type="text" maxlength="1" pattern="\d" inputmode="numeric" class="part part1" title="1 digit" required />
+      <input type="text" maxlength="2" pattern="\d{2}" inputmode="numeric" class="part part2" title="2 digit" required />
+      <input type="text" maxlength="2" pattern="\d{2}" inputmode="numeric" class="part part3" title="2 digit" required />
+      <input type="text" maxlength="3" pattern="\d{3}" inputmode="numeric" class="part part4" title="3 digit" required />
+      <input type="text" maxlength="1" pattern="\d" inputmode="numeric" class="part part5" title="1 digit" required />
+      <button type="submit">Cek Kelulusan</button>
+    </form>
+    <div id="hasilKelulusan"></div>
+  </div>
+
+  <script>
+    const dataSiswa = {
+  "101250018": "ADHE REZKY FAREZA",
+  "101250027": "AFIKA AZAHRA",
+  "101250036": "ALLAN DWI SAPUTRA",
+  "101250045": "ALLISYA ERLOVTA WIJAYA",
+  "101250054": "ALTHAFIA SUDERAJAT",
+  "101250063": "ARFAN ALBEE RIZQULLAH AZZAYYAN",
+  "101250072": "AVRILIA KARTIKA AMIRA",
+  "101250089": "AZRISYAH NUR ARIFIN",
+  "101250098": "DAMARA EKA MARITZA SETIAWAN",
+  "101250107": "DAVIN HAIKAL ALFAREZY",
+  "101250116": "FREDICO MARCELOFRY ANGYUDI",
+  "101250125": "GIBRAN FAHREZY BRILLIANT NINDY",
+  "101250134": "MUBARROK FADHILAH YASIN",
+  "101250143": "MUHAMMAD AASHKA TRI BACHTIAR",
+  "101250152": "MUHAMMAD ARIF RIZALDI",
+  "101250169": "MUHAMMAD NIZAM PUTRA RAHMAN",
+  "101250178": "MUHAMMAD NOUFAL ALFAIZ",
+  "101250187": "NABILA AYU ANASTASYA AL-KHOTI",
+  "101250196": "NARAYO ALBIN ASWANGGA PUTRA",
+  "101250205": "NOVAL ADITYA PRATAMA",
+  "101250214": "NUR AINI RAHMAWATI",
+  "101250223": "RAYHAN FAJAR SYAHPUTRA",
+  "101250232": "REVAN ADITYA PUTRA ARDIYANTO",
+  "101250249": "REYVANDO RAHMADI",
+  "101250258": "SHERYL ONEI ADRIANTO",
+  "101250267": "SYABBIYAH AZKA KIFAYA",
+  "101250276": "ULUL AZMI",
+  "101250285": "WAFIQO RAMADHANI FAUZIYYAH",
+  "101250294": "AGUSTINA MAHARANI",
+  "101250303": "ALDRIC ZAIDAN SANTOSO",
+  "101250312": "ANGGARA HERO SARFARAZ",
+  "101250329": "ANJANI TRI PRATIWI",
+  "101250338": "ARINA KHAILA PUTRI",
+  "101250347": "ARYA TRI LAKSONO",
+  "101250356": "AZZELA RAYSHA ELLENA HARIANTO",
+  "101250365": "CAHYA TIARA KASIH",
+  "101250374": "CHALISTA ARUSHI",
+  "101250383": "DAFIT RACHMAD ANDRIANO",
+  "101250392": "DEKY TRI RAHMADANI",
+  "101250409": "EVA AFIFAH",
+  "101250418": "GALANG RAMADHAN",
+  "101250427": "GWEN SYARIFAH PUTRI",
+  "101250436": "INDRA MAULANA",
+  "101250445": "KARINA PUTRI ASSYIFA",
+  "101250454": "MOCH. RISKY SATRIA",
+  "101250463": "MUHAMMAD FARREL PUTRA ADITYA",
+  "101250472": "MUHAMMAD FAIZ ZAHIRUDIN",
+  "101250489": "MUHAMMAD HAMDANI",
+  "101250498": "NAUFAL ZHAFIF FITRONI",
+  "101250507": "NURIL JANNAH",
+  "101250516": "PANDU PUTRA BUDINATA",
+  "101250525": "SHERLY NAURA PUTRI",
+  "101250534": "TEGAR ANUGRAH PUTRA",
+  "101250543": "TRIYAS APRILLIA PUTRI",
+  "101250552": "ZALFA ZAAHIYATUS RAHMADHANIA",
+  "101250569": "ACH. ZAKY RISKY PRATAMA",
+  "101250578": "ASIYAH",
+  "101250587": "AISYAHRANI PUTRI PRASAYU",
+  "101250596": "ALENA JIHAN SALSABILA",
+  "101250605": "ALYA PUTRI ZALIANTI",
+  "101250614": "ALYSHA AZKAYLA NADHIFA",
+  "101250623": "ARYA WAHYU SETIAWAN",
+  "101250632": "AUDY PRICILLIA SHELOMITHA SILABAN",
+  "101250649": "AZZAM MIRZA",
+  "101250658": "CLARA RIZQY ANINDITA",
+  "101250667": "EDO PRAYOGA RANGGA JATI",
+  "101250676": "ELFASSIYA` BAITUL FARAH",
+  "101250685": "FEORZ AZKA RAMADANIS",
+  "101250694": "GREECIA ADHA OKTANTRIE",
+  "101250703": "JANEETA AULIA ZAHRANI",
+  "101250712": "KAYLA ZAHRA DIANDRA",
+  "101250729": "MAHAPUTRA SATRYO GUMELAR",
+  "101250738": "MICHELLEA IAMNUELLA PUTRI BERNANDA",
+  "101250747": "MIRZA QARI AHNAF",
+  "101250756": "MOCH. AL-BARRA MAULANA",
+  "101250765": "NANENDRA TRI HARTANTO",
+  "101250774": "PURI PUTRI NUGROHO",
+  "101250783": "REINDRA DIRGA PRADIPTA",
+  "101250792": "RESYAH DWANEE ALVARO",
+  "101250809": "RHAMA ARDI HADNOKO",
+  "101250818": "SOFIA ALYA ZAFIRA",
+  "101250827": "TANIA NAURA RAMADHANI",
+  "101250836": "VALENTINO RISKI ANANTA",
+  "101250845": "YEMIMA CHRISTAN SWANITHARIE",
+  "101250854": "MOCHMAMAD FACHRY ALAMSYAH",
+  "101250863": "RIO FEBRIAN"
+};
+
+
+    const confetti = (() => {
+      const canvas = document.querySelector('.confetti');
+      const ctx = canvas.getContext('2d');
+      let W = window.innerWidth, H = window.innerHeight;
+      canvas.width = W; canvas.height = H;
+      window.addEventListener('resize', () => {
+        W = window.innerWidth; H = window.innerHeight;
+        canvas.width = W; canvas.height = H;
+      });
+      const confs = [];
+      for (let i = 0; i < 100; i++) {
+        confs.push({
+          x: Math.random() * W,
+          y: Math.random() * H - H,
+          r: Math.random() * 6 + 4,
+          d: Math.random() * 50 + 50,
+          color: `hsl(${Math.random()*360},70%,60%)`,
+          tilt: Math.random() * 10 - 10
+        });
+      }
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        confs.forEach(c => {
+          ctx.beginPath();
+          ctx.arc(c.x, c.y, c.r, 0, 2 * Math.PI);
+          ctx.fillStyle = c.color;
+          ctx.fill();
+        });
+      }
+      function update() {
+        confs.forEach(c => {
+          c.y += Math.cos(c.d) + 1 + c.r / 2;
+          c.x += Math.sin(c.d) * 2;
+          if (c.y > H) {
+            c.x = Math.random() * W;
+            c.y = -10;
+          }
+        });
+      }
+      let running = false;
+      function loop() {
+        if (!running) return;
+        draw();
+        update();
+        requestAnimationFrame(loop);
+      }
+      return {
+        start: function() {
+          running = true;
+          loop();
+        },
+        stop: function() {
+          running = false;
+          ctx.clearRect(0, 0, W, H);
+        }
+      };
+    })();
+
+    
+    const inputs = document.querySelectorAll('input.part');
+    inputs.forEach((input, i) => {
+      input.addEventListener('input', (e) => {
+        const maxLength = input.getAttribute('maxlength');
+        if (input.value.length >= maxLength) {
+          if (i < inputs.length - 1) {
+            inputs[i + 1].focus();
+          }
+          input.value = input.value.replace(/\D/g, ''); // hanya angka
+        }
+      });
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && input.value.length === 0 && i > 0) {
+          inputs[i - 1].focus();
+        }
+      });
+    });
+
+    
+    document.getElementById('formKelulusan').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const hasilDiv = document.getElementById('hasilKelulusan');
+      const instruksi = document.getElementById('instruksi');
+
+      let nomorGabung = '';
+      for (const input of inputs) {
+        if (!input.value.match(/^\d+$/)) {
+          hasilDiv.innerHTML = `<div class="error">Mohon isi semua bagian nomor ujian dengan angka yang valid.</div>`;
+          return;
+        }
+        nomorGabung += input.value;
+      }
+
+      if (nomorGabung.length !== 9) {
+        hasilDiv.innerHTML = `<div class="error">Nomor ujian harus lengkap sesuai format.</div>`;
+        return;
+      }
+
+      if (dataSiswa.hasOwnProperty(nomorGabung)) {
+        const nama = dataSiswa[nomorGabung];
+        hasilDiv.innerHTML = `
+          <div class="success">
+            🎉 SELAMAT <span style="color:#38b2ac">${nama.toUpperCase()}</span> 🎉<br>
+            Anda telah dinyatakan <b>LULUS</b>!<br>
+            <span style="font-size:1rem;font-weight:400;color:#444">Nomor Ujian: ${formatNomor(nomorGabung)}</span>
+          </div>
+        `;
+        instruksi.style.display = 'none';
+        this.style.display = 'none';
+        confetti.start();
+      } else {
+        hasilDiv.innerHTML = `
+          <div class="error">
+            Maaf, nomor ujian <b>${formatNomor(nomorGabung)}</b> tidak terdaftar. Silakan cek kembali.
+          </div>
+        `;
+        confetti.stop();
+      }
+    });
+
+    // Fungsi format nomor ujian dengan strip, format x-xx-xx-xxx-x
+    function formatNomor(nomor) {
+      return nomor[0] + '-' + nomor.slice(1,3) + '-' + nomor.slice(3,5) + '-' + nomor.slice(5,8) + '-' + nomor[8];
+    }
+  </script>
+</body>
+</html>
